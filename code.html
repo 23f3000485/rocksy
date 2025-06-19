@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Our Political Agenda</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Fonts and colors */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f7f9;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  a {
+    color: #1e90ff;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Layout */
+  header {
+    background: #0055a5;
+    color: white;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    letter-spacing: 1.2px;
+  }
+
+  nav {
+    font-weight: 600;
+  }
+
+  nav a {
+    margin-left: 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  nav a:hover,
+  nav a.active {
+    color: #ff9900;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 2rem auto 4rem auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+    padding: 2rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    color: #0055a5;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #ff9900;
+    padding-bottom: 0.3rem;
+    font-weight: 700;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
+    color: white;
+    text-align: center;
+    padding: 5rem 1rem 6rem 1rem;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 85, 165, 0.7);
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.7);
+  }
+  .hero p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    max-width: 720px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+  }
+
+  /* Services cards */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: #f9f9fb;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-5px);
+  }
+  .service-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-bottom: 3px solid #ff9900;
+  }
+  .service-card-content {
+    padding: 1rem;
+  }
+  .service-card h3 {
+    margin-bottom: 0.6rem;
+    color: #0055a5;
+  }
+  .service-card p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  /* Video container */
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .video-container iframe,
+  .video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+  }
+
+  /* Join section */
+  .join-info {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  form.join-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-width: 400px;
+  }
+  form.join-form input, form.join-form textarea {
+    padding: 0.6rem 0.8rem;
+    border: 1.8px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: none;
+    transition: border-color 0.3s ease;
+  }
+  form.join-form input:focus,
+  form.join-form textarea:focus {
+    border-color: #ff9900;
+    outline: none;
+  }
+  form.join-form button {
+    background-color: #ff9900;
+    border: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  form.join-form button:hover {
+    background-color: #cc7a00;
+  }
+  .form-message {
+    margin-top: 0.8rem;
+    font-weight: 600;
+    color: green;
+  }
+
+  /* Donate section */
+  .donate-info {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .donate-btn {
+    background-color: #0055a5;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgb(0 85 165 / 0.5);
+    transition: background-color 0.3s ease;
+  }
+  .donate-btn:hover {
+    background-color: #003d7a;
+  }
+
+  footer {
+    background: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 0.9rem;
+    margin-top: 4rem;
+    user-select: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    nav a {
+      margin-left: 1rem;
+      font-size: 0.9rem;
+    }
+    .hero h1 {
+      font-size: 1.9rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>हमारा राजनीतिक एजेंडा</h1>
+  <nav>
+    <a href="#services" class="active">सेवाएं</a>
+    <a href="#plans">योजनाएँ</a>
+    <a href="#join">हमसे जुड़ें</a>
+    <a href="#donate">दान करें</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-label="Site introduction">
+    <h1>हम आपकी सेवा में, नए भारत का निर्माण</h1>
+    <p>गौ सेवा, जीव-जंतुओं की देखभाल, लावारिश शरीरों को अंतिम संस्कार और दिल्ली विश्वविद्यालय में हमारी योजनाएं</p>
+  </section>
+
+  <section id="services" aria-labelledby="services-title">
+    <h2 id="services-title">हमारी सेवाएं</h2>
+    <p>हम समाज में कई आवश्यक सेवाएं प्रदान कर रहे हैं, जिनमें शामिल हैं:</p>
+    <div class="services-grid">
+      <article class="service-card" aria-label="गौ सेवा">
+        <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=600&q=80" alt="गाय" />
+        <div class="service-card-content">
+          <h3>गौ सेवा</h3>
+          <p>गायों की देखभाल, उनकी सुरक्षा और संरक्षण के लिए निरंतर प्रयास।</p>
+        </div>
+      </article>
+      <article class="service-card" aria-label="जीव-जंतुओं की सेवा">
+        <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=600&q=80" alt="जानवर" />
+        <div class="service-card-content">
+          <h3>जीव-जंतुओं की सेवा</h3>
+          <p>परिवार के सदस्यों की तरह जीव-जंतुओं की देखभाल और मदद।</p>
+        </div>
+      </article>
+      <article class="service-card" aria-label="लावारिश शवों का अंतिम संस्कार">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="अंतिम संस्कार" />
+        <div class="service-card-content">
+          <h3>लावारिश शवों का अंतिम संस्कार</h3>
+          <p>लावारिश शवों का सम्मानपूर्वक अंतिम संस्कार करके समाज सेवा।</p>
+        </div>
+      </article>
+    </div>
+    <div>
+      <h3>सेवाओं के फोटोज़ और वीडियो</h3>
+      <div class="video-container">
+        <video controls poster="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=600&q=80">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+          आपका ब्राउज़र वीडियो सपोर्ट नहीं करता।
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section id="plans" aria-labelledby="plans-title">
+    <h2 id="plans-title">दिल्ली विश्वविद्यालय में हमारी योजनाएँ</h2>
+    <p>हमारे योजना विवरण:</p>
+    <ul>
+      <li>शिक्षा के स्तर को बढ़ावा देना और स्वच्छता अभियान चलाना।</li>
+      <li>छात्रों के लिए रोजगार और कौशल विकास के संसाधन उपलब्ध कराना।</li>
+      <li>संस्कृति और खेल गतिविधियों को प्रोत्साहित करना।</li>
+      <li>सुरक्षा के कड़े उपाय और छात्र कल्याण केंद्र स्थापित करना।</li>
+    </ul>
+  </section>
+
+  <section id="join" aria-labelledby="join-title">
+    <h2 id="join-title">हमसे जुड़ें</h2>
+    <p class="join-info">हमारे कार्य दल के सदस्य बनने के लिए नीचे विवरण भरें:</p>
+    <form class="join-form" aria-label="Join crew form">
+      <input type="text" id="name" name="name" placeholder="नाम" required aria-required="true" />
+      <input type="email" id="email" name="email" placeholder="ईमेल" required aria-required="true" />
+      <textarea id="message" name="message" rows="4" placeholder="मैं आपके साथ कैसे काम करना चाहता हूँ..." required aria-required="true"></textarea>
+      <button type="submit">जुड़ें</button>
+      <p class="form-message" aria-live="polite" role="alert"></p>
+    </form>
+  </section>
+
+  <section id="donate" aria-labelledby="donate-title">
+    <h2 id="donate-title">दान करें</h2>
+    <p class="donate-info">हमारे अभियान को समर्थन देने के लिए कृपया दान करें। नीचे के विवरण से आप दान कर सकते हैं:</p>
+    <ul>
+      <li>UPI ID: 12345@bank</li>
+      <li>Account Name: Hamara Political Trust</li>
+      <li>Bank: State Bank of India</li>
+      <li>Account Number: 123456789012</li>
+      <li>IFSC: SBIN0000123</li>
+    </ul>
+    <button class="donate-btn" id="copyButton">UPI ID कॉपी करें</button>
+    <p id="copySuccessMsg" style="color: green; font-weight: 600; margin-top: 0.5rem;" aria-live="polite"></p>
+  </section>
+</main>
+
+<footer>
+  &copy; 2024 हमारा राजनीतिक एजेंडा | संपर्क करें: <a href="mailto:contact@hamarapolitical.org">contact@hamarapolitical.org</a>
+</footer>
+
+<script>
+  // Navigation link active on click
+  const navLinks = document.querySelectorAll('nav a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      navLinks.forEach(l => l.classList.remove('active'));
+      e.target.classList.add('active');
+    });
+  });
+
+  // Join form submission simulation
+  const joinForm = document.querySelector('.join-form');
+  const formMessage = document.querySelector('.form-message');
+  joinForm.addEventListener('submit', e => {
+    e.preventDefault();
+    // Simple validation done by input 'required' attributes
+    formMessage.textContent = 'धन्यवाद! आपने सफलतापूर्वक हमारे कार्य दल में जुड़ने के लिए आवेदन किया है। हम जल्द ही आपसे संपर्क करेंगे।';
+    joinForm.reset();
+  });
+
+  // Copy UPI ID to clipboard on button click
+  const copyButton = document.getElementById('copyButton');
+  const copySuccessMsg = document.getElementById('copySuccessMsg');
+
+  copyButton.addEventListener('click', () => {
+    navigator.clipboard.writeText('12345@bank').then(() => {
+      copySuccessMsg.textContent = 'UPI ID कॉपी हो गई है! dān करने के लिए इसे अपने UPI ऐप में पेस्ट करें।';
+      setTimeout(() => {
+        copySuccessMsg.textContent = '';
+      }, 4000);
+    }).catch(() => {
+      copySuccessMsg.textContent = 'क्षमा करें, कॉपी करने में समस्या हुई। कृपया मैनुअल रूप से कॉपी करें।';
+    });
+  });
+</script>
+</body>
+</html>
+
